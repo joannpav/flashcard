@@ -1,0 +1,212 @@
+{% extends "base_template.html" %}
+
+{% load staticfiles %}
+{% block content %}
+
+ <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
+	<link href="{% static 'css/gsdk-base.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/dropzone.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/qa.css' %}" type="text/css" rel="stylesheet"/>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="{% static 'js/selectmytext.js' %}"></script>
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css" rel="stylesheet">
+
+            <!--      Wizard container        -->   
+            <div class="wizard-container"> 
+                <form action="" method="">
+                <div class="card wizard-card ct-wizard-azzure" id="wizard">
+                    	<div class="wizard-header">
+                        	<h3>
+                        	   <b>CREATE</b> YOUR CARD<br>
+                        	   <small>This is where we start</small>
+                        	</h3>
+                    	</div>
+                    	<ul>
+                            <li><a href="#details" data-toggle="tab">Upload Image</a></li>
+                            <li><a href="#captain" data-toggle="tab">Select Text</a></li>
+                            <li><a href="#description" data-toggle="tab">See Card</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane" id="details">
+                              <div class="row">
+                                  <div class="col-sm-12">
+                                    <h4 class="info-text">Upload Your Image</h4>
+                                  </div>
+                                  <div class="col-sm-4 col-sm-offset-1">
+                                     <div id="dropzone">
+
+        <!-- IMPORTANT enctype attribute! -->
+        <form class="dropzone" action="{% url "home" %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+        </form>
+
+        <button id="submit-all">
+            Submit all files
+        </button>
+        <a href="/ocr">Look at the text from your image</a>
+        <div id="ocr">{{ textFile }}</div>
+
+        <script src="{% static 'js/dropzone.js' %}"></script>
+        <script type="text/javascript">
+            Dropzone.options.myDropzone = {
+
+                // Prevents Dropzone from uploading dropped files immediately
+                autoProcessQueue : false,
+
+                init : function() {
+                    var submitButton = document.querySelector("#submit-all");
+                    myDropzone = this;
+
+                    submitButton.addEventListener("click", function() {
+                        myDropzone.processQueue();
+                        // Tell Dropzone to process all queued files.
+                    });
+
+                    // You might want to show the submit button only when
+                    // files are dropped here:
+                    this.on("addedfile", function() {
+                        // Show submit button here and/or inform user to click it.
+                    });
+
+                }
+            };
+        </script>
+
+
+{#                                          <div class="picture">#}
+{#                                              <img src="{% static 'images/flash_cards_Fotor_Fotor.jpg' %}" class="picture-src" id="wizardPicturePreview" title=""/>#}
+{#                                              <input type="file" id="wizard-picture">#}
+{#                                          </div>#}
+{#                                          <h6>Choose Image</h6>#}
+                                      </div>
+                                  </div>
+{#                                  <div class="col-sm-6">#}
+{#                                      <div class="form-group">#}
+{#                                        <label for="exampleInputEmail1">What is the Question?</label>#}
+{#                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Why is the sky blue?">#}
+{#                                      </div>#}
+{#                                      <div class="form-group">#}
+{#                                        <label for="exampleInputEmail1">Answer:</label>#}
+{#                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Because...">#}
+{#                                      </div>#}
+{#                                  </div>#}
+
+                              </div>
+                            </div>
+                            <div class="tab-pane" id="captain">
+                                <h4 class="info-text"> </h4>
+                                <div class="row">
+                                    <div class="col-sm-10 col-sm-offset-1">
+
+                                        <h3>Compose your question</h3>
+                                        <select id="list">
+                                          <option value="what">What</option>
+                                         <option value="how">How</option>
+                                        </select>
+
+                                        <select id="list2">
+                                          <option value="are">are</option>
+                                         <option value="is">is</option>
+                                        </select>
+
+
+                                        <h3>Select Some Text</h3>
+    <div id="ocr">{{ textFile }}</div>
+
+
+
+                                        <div class="col-sm-10 col-sm-offset-1">
+                                        <form id="CreateCardForm" name="CreateCardForm"  action="/createCard/" method="POST">{% csrf_token %}
+<div class="col-sm-6">
+<p>
+    <label class="qaLabel">Question</label><br>
+  <textarea class="qa" id="q" name="questionText"></textarea>
+   </p>
+</div>
+<div class="col-sm-6">
+<p>
+    <label class="qaLabel">Answer</label><br>
+    <textarea class="qa" id="a" name="answerText"></textarea>
+</p>
+</div>
+<div class="col-sm-4">
+    <p><button class="createCard" onclick="createCard">Create Card</button></p>
+    </div>
+</form>
+
+    <p><button class="createCard" id="clearCard" name="clearCard" onclick="ClearCard()">Erase Card</button></p>
+{#    <a href="/">Go back and select another file</a>#}
+</div>
+
+
+                                            <!--<div class="choice" data-toggle="wizard-radio" rel="tooltip" title="Renters you approve will be able to take this boat">-->
+                                                <!--<input type="radio" name="job" value="Design">-->
+                                                <!--<div class="icon">-->
+                                                    <!--<i class="fa fa-life-ring"></i>-->
+                                                <!--</div>-->
+                                                <!--<h6>No Captain</h6>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                        <!--<div class="col-sm-4">-->
+                                            <!--<div class="choice" data-toggle="wizard-radio" rel="tooltip" title="Select this option if you or a certified captain will be included.">-->
+                                                <!--<input type="radio" name="job" value="Code">-->
+                                                <!--<div class="icon">-->
+                                                    <!--<i class="fa fa-male"></i>-->
+                                                <!--</div>-->
+                                                <!--<h6>Includes Captain</h6>-->
+                                            <!--</div>-->
+                                            <!---->
+                                        <!--</div>-->
+                                  </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="description">
+                                <div class="row">
+                                    <h4 class="info-text"> This is what your card will look like</h4>
+                                    <div class="col-sm-6 col-sm-offset-1">
+                                         <div class="form-group">
+                                            <label>Question</label>
+                                            <textarea class="form-control" placeholder="" rows="9">
+                                                
+                                            </textarea>
+                                          </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                         <div class="form-group">
+                                            <label>Answer</label>
+
+                                            <!--<p class="description">"The boat really nice name is recognized as being a really awesome boat. We use it every sunday when we go fishing and we catch a lot. It has some kind of magic shield around it."</p>-->
+                                          </div>
+                                    </div>
+
+                                    <div class="col-sm-10 col-sm-offset-1">
+                                      <div class="form-group">
+                                          <label>To make changes, click Previous.  To accept, click Finish</label>
+                                      </div>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="wizard-footer">
+                            	<div class="pull-right">
+                                    <input type='button' class='btn btn-next btn-fill btn-info btn-wd btn-sm' name='next' value='Next' />
+                                    <input type='button' class='btn btn-finish btn-fill btn-info btn-wd btn-sm' name='finish' value='Finish' />
+        
+                                </div>
+                                <div class="pull-left">
+                                    <input type='button' class='btn btn-previous btn-fill btn-default btn-wd btn-sm' name='previous' value='Previous' />
+                                </div>
+                                <div class="clearfix"></div>
+                        </div>	
+                </div>
+                </form>
+            </div> <!-- wizard container -->
+
+{##}
+{#    <script src="{% static 'js/jquery-1.10.2.js' %}" type="text/javascript"></script>#}
+{#	<script src="{% static 'js/bootstrap.min.js' %}" type="text/javascript"></script>#}
+{#		#}
+{#	<!--   plugins 	 -->#}
+{#	<script src="{% static 'js/jquery.bootstrap.wizard.js' %}" type="text/javascript"></script>#}
+{#	<script src="{% static 'js/wizard.js' %}"></script>#}
+	{% endblock content %}

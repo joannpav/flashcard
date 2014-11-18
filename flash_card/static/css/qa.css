@@ -1,0 +1,58 @@
+.qa {
+    #background-color: #ffffe0;
+    #padding: 10px;
+    #border-color: yellow;
+    #border-style: solid;
+    width: 100%;
+
+    color: #c6e17e;
+    font-size: 28px;
+    font-weight: 200;
+    padding: 20px;
+    background: #404040;
+    #color: #b3b3b3;
+    position: relative;
+    border-radius: 0 0 5px 5px;
+    -moz-border-radius: 0 0 5px 5px;
+    -webkit-border-radius: 0 0 5px 5px;
+
+}
+
+.qaLabel {
+    color: #404040;
+    font-size: 28px;
+    font-weight: 200;
+}
+
+.createCard {
+    background-color: #55acee;
+    display: inline-block;
+    padding: 0.5em 1em 0.5em;
+    font-weight: 500;
+    color: #fff;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px;
+}
+
+#ocr {
+    #background-color: #ffffe0;
+    #padding: 10px;
+    #border-color: yellow;
+    #border-style: solid;
+    width: 100%;
+
+    color: white;
+    font-size: 20px;
+    font-weight: 200;
+    padding: 20px;
+    background: #404040;
+    #color: #b3b3b3;
+    position: relative;
+    border-radius: 0 0 5px 5px;
+    -moz-border-radius: 0 0 5px 5px;
+    -webkit-border-radius: 0 0 5px 5px;
+
+}

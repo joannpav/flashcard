@@ -1,0 +1,17 @@
+{% extends "base_template.html" %}
+
+{% load staticfiles %}
+{% block content %}
+
+
+
+
+<p>Your list of cards:</p>
+{% for question in questions %}
+<p>
+    <p>Question: {{ question.question }}</p>
+    <p>Answer: {{ question.answer }}</p>
+</p>
+{% endfor %}
+
+{% endblock content %}

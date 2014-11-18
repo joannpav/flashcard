@@ -1,0 +1,45 @@
+{% extends "base_template.html" %}
+
+{% load staticfiles %}
+{% block content %}
+    <link href="{% static 'css/qa.css' %}" type="text/css" rel="stylesheet"/>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="{% static 'js/selectmytext.js' %}"></script>
+    <title></title>
+<div>
+<h3>Step 1: Compose your question</h3>
+<select id="list">
+  <option value="what">What</option>
+ <option value="how">How</option>
+</select>
+
+<select id="list2">
+  <option value="are">are</option>
+ <option value="is">is</option>
+</select>
+
+
+    <h3>Step 2: Select some text for the Question
+    <small>As you select text, the Question form below will auto-populate.</small></h3>
+    <h3>Step 3: Select some text for the Answer <small>As you select text, the Answer form below will auto-populate.</small></h3>
+    <div id="ocr">{{ textFile }}</div>
+
+
+<form id="CreateCardForm" name="CreateCardForm"  action="/createCard/" method="POST">{% csrf_token %}
+
+<p>
+    <label class="qaLabel">Question</label><br>
+  <textarea class="qa" id="q" name="questionText"></textarea>
+   </p>
+<p>
+    <label class="qaLabel">Answer</label><br>
+    <textarea class="qa" id="a" name="answerText"></textarea>
+</p>
+<h3>Step 4: Click to create your card <small>Or click to start over</small></h3>
+    <p><button class="createCard" onclick="createCard">Create Card</button></p>
+</form>
+
+    <p><button class="createCard" id="clearCard" name="clearCard" onclick="ClearCard()">Erase Card</button></p>
+{#    <a href="/">Go back and select another file</a>#}
+</div>
+{% endblock content %}
