@@ -8,54 +8,74 @@
 
 
     <title></title>
-<div>
-<h3 rel="tooltip" title="Choose how you want the question formatted">Step 1: Compose your question</h3>
-
-<style type="text/css">
-#bootstrapSelectForm .selectContainer .form-control-feedback {
-    /* Adjust feedback icon position */
-    right: -15px;
-}
-</style>
-
-<form id="bootstrapSelectForm" method="post" class="form-horizontal">
-
-
-    <div class="form-group">
-
-        <div class="col-sm-5 selectContainer">
-            <select name="language" class="form-control" id="list">
-                <option value="what">What</option>
-                <option value="how">How</option>
-            </select>
-            </div>
-
-            <div class="col-sm-5 selectContainer">
-            <select name="language" class="form-control" id="list2">
-                <option value="are">are</option>
-                <option value="is">is</option>
-            </select>
+<div class="wizard-container">
+    <form action="" method="">
+    <div class=" wizard-card ct-wizard-blue" id="wizard">
+      	<div class="wizard-header">
+            <h3>
+               <b>BUILD</b> YOUR CARD <br>
+               <small>Easily add text to a flash card.</small>
+            </h3>
         </div>
-</div>
-</form>
+        <div class="row">
+                <div class="col-sm-10 col-sm-offset-1">
+                    <div class="col-sm-3">
+                        <div class="choice" data-toggle="wizard-radio">
+                            <div class="icon" rel="tooltip" title="Choose how you want the question formatted">
+                                <i class="fa fa-pencil"></i>
+                            </div>
+                            <h6>Choose 5W's</h6>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="choice">
+                        <form id="bootstrapSelectForm" method="post" class="form-horizontal">
 
 
-{#<select id="list">#}
-{#  <option value="what">What</option>#}
-{# <option value="how">How</option>#}
-{#</select>#}
-{##}
-{#<select id="list2">#}
-{#  <option value="are">are</option>#}
-{# <option value="is">is</option>#}
-{#</select>#}
+                            <div class="form-group">
+                                    <style type="text/css">
+                                    #bootstrapSelectForm .selectContainer .form-control-feedback {
+                                        /* Adjust feedback icon position */
+                                        right: -15px;
+                                    }
+                                    </style>
+                                    <select name="language" class="form-control" id="list">
+                                        <option value="what">What</option>
+                                        <option value="how">How</option>
+                                        <option value="who">Who</option>
+                                        <option value="when">When</option>
+                                        <option value="where">Where</option>
+                                    </select>
+                                    <select name="language" class="form-control" id="list2">
+                                        <option value="are">are</option>
+                                        <option value="is">is</option>
+                                    </select>
+
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+        </div>
 
 
-    <h3 rel="tooltip" title="As you select text, the Question form below will auto-populate.">
-        Step 2: Select some text for the Question
-    </h3>
-    <h3 rel="tooltip" title="Select more text to populate the Answer form.">Step 3: Select some text for the Answer</h3>
-        <div id="ocr">{{ textFile }}</div>
+        <div class="row">
+                <div class="col-sm-10 col-sm-offset-1">
+                    <div class="col-sm-3">
+                        <div class="choice" data-toggle="wizard-radio">
+                            <div class="icon" rel="tooltip" title="As you select text, the Question form below will auto-populate.">
+                                <i class="fa fa-pencil"></i>
+                            </div>
+                            <h6>Select Text</h6>
+                        </div>
+                    </div>
+                    <div class="col-sm-9">
+                        <h3>Text From Your Image</h3>
+                        <div id="ocr">{{ textFile }}</div>
+                    </div>
+                </div>
+        </div>
+
 
 
 <form id="CreateCardForm" name="CreateCardForm"  action="/createCard/" method="POST">{% csrf_token %}
@@ -78,9 +98,7 @@
 </div>
 
 
-    <!--script src="//code.jquery.com/jquery-1.11.0.min.js"></script-->
+
     <!--script src="{% static 'js/selectmytext.js' %}"></script-->
-<!--script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script-->
-    <!--script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script-->
-    <!--script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/js/bootstrap-select.min.js"></script-->
+
 {% endblock content %}

@@ -92,3 +92,6 @@ def quiz_score(request):
 
 def card_score(request):
 	return render_to_response('card_score.html', locals())
+
+def maker_revamp(request):
+	return render_to_response('maker_revamp.html', locals())

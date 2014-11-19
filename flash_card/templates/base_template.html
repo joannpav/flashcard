@@ -22,7 +22,7 @@
 
 </head>
 
-<body class="image-container set-full-height" style="background-image: url('{% static 'images/water.jpg' %}')">
+<body class="image-container set-full-height" style="background-image: url('{% static 'images/alcatraz.jpg' %}')">
 <div>
     <!--  Branding   -->
     <a href="/">
@@ -82,15 +82,6 @@
                    Quiz Yourself
                 </a>
             </li>
-
-{#                    <li><a href="{% url 'home' %}">Home</a></li>#}
-{#                    {% if user.is_authenticated %}#}
-{#                        <li><a href="{% url 'profile' %}">Your Games</a></li>#}
-{#                        <li><a href="{% url 'logout' %}">Logout</a></li>#}
-{#                    {% elif not user.is_authenticated %}#}
-{#                        <li><a href="{% url "login" %}">Login</a></li>#}
-{#                        <li><a href="{% url "register" %}">Register</a></li>#}
-{#                    {% endif %}#}
                     {% block link %}{% endblock link %}
 
           </ul>

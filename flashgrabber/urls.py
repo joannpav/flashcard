@@ -12,6 +12,6 @@ urlpatterns = patterns('',
     url(r'^quiz_menu/', 'flash_card.views.quiz_menu', name='quiz-menu'),
     url(r'^quiz_score/', 'flash_card.views.quiz_score', name='quiz_score'),
     url(r'^card_score/', 'flash_card.views.card_score', name='card_score'),
-
+    url(r'^maker_revamp/', 'flash_card.views.maker_revamp', name='maker_revamp'),
     #url(r'^admin/', include(admin.site.urls)),
 )

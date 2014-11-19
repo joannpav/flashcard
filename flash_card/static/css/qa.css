@@ -65,3 +65,13 @@
     display: block;
     text-align: left;
 }
+
+#list {
+    margin-bottom: 15px;
+    margin-top: 20px;
+
+}
+
+#list2 {
+    margin-bottom: 20px;
+}
