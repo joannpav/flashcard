@@ -142,6 +142,21 @@ body {
 .card .footer .social-links a{
     margin: 0 7px;
 }
+
+/*.card .footer .social-links a:hover{*/
+   /*color:yellow;*/
+/*}*/
+
+.pass:hover {
+    color: #00c300;
+}
+
+.fail:hover {
+    color: #dd0000;
+}
+.del:hover {
+    color: black;
+}
 .card .header {
     padding: 15px 20px;
     height: 90px;

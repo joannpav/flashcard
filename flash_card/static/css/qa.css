@@ -57,6 +57,10 @@
 
 }
 
+.btn {
+    float: left;
+    margin-left: 15px;
+}
 .form-control {
     display: block;
     text-align: left;

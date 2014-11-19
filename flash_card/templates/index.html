@@ -6,14 +6,14 @@
 <link href="{% static 'css/dropzone.css' %}" rel="stylesheet" />
 <h2 class="start">Get Started by Adding Your Image</h2>
         <!-- IMPORTANT enctype attribute! -->
-        <form class="dropzone" action="{% url "home" %}" method="post" enctype="multipart/form-data">
+        <form rel="tooltip" title="Click to upload your image" class="dropzone" action="{% url "home" %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
         </form>
 
 {#        <button id="submit-all">#}
 {#            Submit all files#}
 {#        </button>#}
-        <div class="see"><a id="submit-all" class="btn btn-default btn-lg btn-fill" href="/ocr"><i class="fa fa-bolt"></i>
+        <div rel="tooltip" title="Click to create your card"class="see"><a id="submit-all" class="btn btn-default btn-lg btn-fill" href="/ocr"><i class="fa fa-bolt"></i>
                         Make Your Card</a></div>
         <div id="ocr">{{ textFile }}</div>
  

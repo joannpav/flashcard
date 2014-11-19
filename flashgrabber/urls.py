@@ -8,6 +8,6 @@ urlpatterns = patterns('',
 	url(r'^createCard/', 'flash_card.views.createCard', name='createCard'),
 	url(r'^ocr/', 'flash_card.views.ocr', name='ocr'),
 	url(r'^cardBox/', 'flash_card.views.viewCardList', name='cardBox'),
-    # url(r'^snake/$', 'games.views.snake', name='snake'),
+    url(r'^quiz/', 'flash_card.views.quiz', name='quiz'),
     #url(r'^admin/', include(admin.site.urls)),
 )

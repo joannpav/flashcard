@@ -720,12 +720,12 @@ label{
 
 .wizard-container{
    
-    padding-top: 100px;
+    padding-top: 0;
     z-index: 3;
 }
 .wizard-card{
     min-height: 410px;
-    background-color: #FFFFFF;
+    /*background-color: rgb(255, 255, 255);*/
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.15), 0 0 1px 1px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     padding: 10px 0;
@@ -795,6 +795,10 @@ label{
 .wizard-card .wizard-header h3{
     font-weight: 200;
     text-align: center;
+    color: white;
+}
+.wizard-card small{
+    color: white;
 }
 .wizard-card > ul > li{
     text-align: center;
@@ -837,11 +841,13 @@ label{
     text-align: center;
     font-weight: 300;
     margin: 10px 0 30px;
+    color: white;
 }
 .wizard-card .choice{
     text-align: center;
     cursor: pointer;
     margin-top: 20px;
+    color: white;
 }
 .wizard-card .choice .icon{
    text-align: center;

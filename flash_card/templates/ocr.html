@@ -4,13 +4,12 @@
 {% block content %}
     <link href="{% static 'css/qa.css' %}" type="text/css" rel="stylesheet"/>
     <link href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.5.4/bootstrap-select.min.css" rel="stylesheet">
-    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="{% static 'js/selectmytext.js' %}"></script>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/css/bootstrap-select.min.css" />
+
+
     <title></title>
 <div>
-<h3>Step 1: Compose your question</h3>
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/css/bootstrap-select.min.css" />
-<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/js/bootstrap-select.min.js"></script>
+<h3 rel="tooltip" title="Choose how you want the question formatted">Step 1: Compose your question</h3>
 
 <style type="text/css">
 #bootstrapSelectForm .selectContainer .form-control-feedback {
@@ -52,9 +51,10 @@
 {#</select>#}
 
 
-    <h3>Step 2: Select some text for the Question<br>
-    <small>As you select text, the Question form below will auto-populate.</small></h3>
-    <h3>Step 3: Select some text for the Answer
+    <h3 rel="tooltip" title="As you select text, the Question form below will auto-populate.">
+        Step 2: Select some text for the Question
+    </h3>
+    <h3 rel="tooltip" title="Select more text to populate the Answer form.">Step 3: Select some text for the Answer</h3>
         <div id="ocr">{{ textFile }}</div>
 
 
@@ -68,13 +68,13 @@
     <label class="qaLabel">Answer</label><br>
     <textarea class="qa" id="a" name="answerText"></textarea>
 </p>
-<h3 class="step4">Step 4: Click to create your card Or click to start over</h3>
-    <button class="btn btn-default btn-lg btn-fill"  onclick="createCard"><i class="fa fa-bolt"></i> Create Card</button>
+{#<h3 class="step4" >Step 4: Click to create your card Or click to start over</h3>#}
+    <button rel="tooltip" title="Click to create your card" class="btn btn-default btn-lg btn-fill"  onclick="createCard"><i class="fa fa-bolt"></i> Create Card</button>
 
-
-    <button class="btn btn-default btn-lg btn-fill" id="clearCard" name="clearCard" onclick="ClearCard()"><i class="fa fa-bolt"></i> Erase Card</button>
+</form>
+    <button rel="tooltip" title="Click to erase your card" class="btn btn-default btn-lg btn-fill" id="clearCard" name="clearCard" onclick="ClearCard()"><i class="fa fa-bolt"></i> Erase Card</button>
 {#    <a href="/">Go back and select another file</a>#}
-    </form>
+
 </div>
 
 <script>
@@ -126,6 +126,9 @@ $(document).ready(function() {
 });
 
 </script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <!--script src="//code.jquery.com/jquery-1.11.0.min.js"></script-->
+    <!--script src="{% static 'js/selectmytext.js' %}"></script-->
+<!--script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script-->
+    <!--script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script-->
+    <!--script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/js/bootstrap-select.min.js"></script-->
 {% endblock content %}

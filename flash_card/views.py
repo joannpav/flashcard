@@ -79,3 +79,6 @@ def takeQuiz(request):
 
 def make_card(request):
 	return render_to_response('make_card.html', locals())
+
+def quiz(request):
+	return render_to_response('quiz.html', locals())
