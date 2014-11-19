@@ -54,3 +54,7 @@ docs/_build/
 target/
 .idea
 .idea
+*.pyc
+.idea/
+staticfiles
+local_settings.pylocal_settings.py
