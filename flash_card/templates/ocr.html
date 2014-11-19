@@ -3,26 +3,59 @@
 {% load staticfiles %}
 {% block content %}
     <link href="{% static 'css/qa.css' %}" type="text/css" rel="stylesheet"/>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.5.4/bootstrap-select.min.css" rel="stylesheet">
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="{% static 'js/selectmytext.js' %}"></script>
     <title></title>
 <div>
 <h3>Step 1: Compose your question</h3>
-<select id="list">
-  <option value="what">What</option>
- <option value="how">How</option>
-</select>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/css/bootstrap-select.min.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/js/bootstrap-select.min.js"></script>
 
-<select id="list2">
-  <option value="are">are</option>
- <option value="is">is</option>
-</select>
+<style type="text/css">
+#bootstrapSelectForm .selectContainer .form-control-feedback {
+    /* Adjust feedback icon position */
+    right: -15px;
+}
+</style>
+
+<form id="bootstrapSelectForm" method="post" class="form-horizontal">
 
 
-    <h3>Step 2: Select some text for the Question
+    <div class="form-group">
+
+        <div class="col-sm-5 selectContainer">
+            <select name="language" class="form-control" id="list">
+                <option value="what">What</option>
+                <option value="how">How</option>
+            </select>
+            </div>
+
+            <div class="col-sm-5 selectContainer">
+            <select name="language" class="form-control" id="list2">
+                <option value="are">are</option>
+                <option value="is">is</option>
+            </select>
+        </div>
+</div>
+</form>
+
+
+{#<select id="list">#}
+{#  <option value="what">What</option>#}
+{# <option value="how">How</option>#}
+{#</select>#}
+{##}
+{#<select id="list2">#}
+{#  <option value="are">are</option>#}
+{# <option value="is">is</option>#}
+{#</select>#}
+
+
+    <h3>Step 2: Select some text for the Question<br>
     <small>As you select text, the Question form below will auto-populate.</small></h3>
-    <h3>Step 3: Select some text for the Answer <small>As you select text, the Answer form below will auto-populate.</small></h3>
-    <div id="ocr">{{ textFile }}</div>
+    <h3>Step 3: Select some text for the Answer
+        <div id="ocr">{{ textFile }}</div>
 
 
 <form id="CreateCardForm" name="CreateCardForm"  action="/createCard/" method="POST">{% csrf_token %}
@@ -35,11 +68,64 @@
     <label class="qaLabel">Answer</label><br>
     <textarea class="qa" id="a" name="answerText"></textarea>
 </p>
-<h3>Step 4: Click to create your card <small>Or click to start over</small></h3>
-    <p><button class="createCard" onclick="createCard">Create Card</button></p>
-</form>
+<h3 class="step4">Step 4: Click to create your card Or click to start over</h3>
+    <button class="btn btn-default btn-lg btn-fill"  onclick="createCard"><i class="fa fa-bolt"></i> Create Card</button>
 
-    <p><button class="createCard" id="clearCard" name="clearCard" onclick="ClearCard()">Erase Card</button></p>
+
+    <button class="btn btn-default btn-lg btn-fill" id="clearCard" name="clearCard" onclick="ClearCard()"><i class="fa fa-bolt"></i> Erase Card</button>
 {#    <a href="/">Go back and select another file</a>#}
+    </form>
 </div>
+
+<script>
+$(document).ready(function() {
+    $('#bootstrapSelectForm')
+        .find('[name="colors"]')
+            .selectpicker()
+            .change(function(e) {
+                // revalidate the color when it is changed
+                $('#bootstrapSelectForm').bootstrapValidator('revalidateField', 'colors');
+            })
+            .end()
+        .find('[name="language"]')
+            .selectpicker()
+            .change(function(e) {
+                // revalidate the language when it is changed
+                $('#bootstrapSelectForm').bootstrapValidator('revalidateField', 'language');
+            })
+            .end()
+        .bootstrapValidator({
+            excluded: ':disabled',
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                colors: {
+                    validators: {
+                        callback: {
+                            message: 'Please choose 2-4 colors you like most',
+                            callback: function(value, validator, $field) {
+                                // Get the selected options
+                                var options = validator.getFieldElements('colors').val();
+                                return (options != null && options.length >= 2 && options.length <= 4);
+                            }
+                        }
+                    }
+                },
+                language: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Please select your native language.'
+                        }
+                    }
+                }
+            }
+        });
+});
+
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 {% endblock content %}

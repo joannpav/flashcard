@@ -4,14 +4,63 @@
 {% block content %}
 
 
+<div class="col-sm-12 ">
 
-
-<p>Your list of cards:</p>
+<h3 class="you_saved">Your Deck of cards:</h3>
 {% for question in questions %}
-<p>
-    <p>Question: {{ question.question }}</p>
-    <p>Answer: {{ question.answer }}</p>
-</p>
-{% endfor %}
+
+{#    <p>Question: {{ question.question }}</p>#}
+{#    <p>Answer: {{ question.answer }}</p>#}
+
+        <div class="col-sm-4">
+                <!--    Here comes your card          -->
+                <div class="card-container">
+                <div class="card">
+                    <div class="front">
+                        <div class="cover">
+                            <img src="{% static 'images/dandy.jpg' %}"/>
+                        </div>
+                        <div class="user">
+                            <img class="img-circle" src="{% static 'images/flash_cards_Fotor_Fotor.jpg' %}"/>
+                        </div>
+                        <div class="content">
+                            <div class="main">
+                                <h3 class="name"><i class="fa fa-bolt"></i> Question</h3>
+
+                                <h5>{{ question.question }}?</h5>
+
+                            </div>
+
+                        </div>
+                    </div> <!-- end front panel -->
+                    <div class="back">
+                        <div class="header">
+                            <h5 class="motto">Flash Grabber<br>Flashcards From Your Screenshots<br>Study what you want,
+                                when you want</h5>
+                        </div>
+                        <div class="content">
+                            <div class="main">
+                                <h4 class="text-center"><i class="fa fa-bolt"></i> Answer</h4>
+                                <p>{{ question.answer }}.</p>
+                                </div>
+                        </div>
+                        <div class="footer">
+                            <div class="social-links text-center">
+                                <a href="" class=""><i class="fa fa-graduation-cap"></i> Pass</a>
+                                <a href="" class=""><i class="fa fa-thumbs-o-down"></i> Fail</a>
+
+                            </div>
+                        </div>
+                    </div> <!-- end back panel -->
+                </div> <!-- end card -->
+            </div> <!-- end card-container -->
+
+</div>
+    {% endfor %}
+</div>
+
+
+
+
 
 {% endblock content %}

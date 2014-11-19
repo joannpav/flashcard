@@ -21,7 +21,7 @@
 .qaLabel {
     color: #404040;
     font-size: 28px;
-    font-weight: 200;
+    font-weight: 400;
 }
 
 .createCard {
@@ -55,4 +55,9 @@
     -moz-border-radius: 0 0 5px 5px;
     -webkit-border-radius: 0 0 5px 5px;
 
+}
+
+.form-control {
+    display: block;
+    text-align: left;
 }

@@ -99,6 +99,13 @@ h1 .subtitle{
     margin-top: 10px;
 }
 
+.start, .step4 {
+    color: white;
+    font-weight: 300;
+    margin-bottom:20px;
+    margin-top: 0px;
+    line-height: 90%;
+}
 .you_saved {
     color: #f7ca1a;
     text-align: left;
