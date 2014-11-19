@@ -1,0 +1,59 @@
+{% extends "base_template.html" %}
+{% load staticfiles %}
+{% block content %}
+
+    <!--      Wizard container        -->
+<div class="wizard-container">
+    <form action="" method="">
+    <div class=" wizard-card ct-wizard-blue" id="wizard">
+      	<div class="wizard-header">
+            <h3>
+               <b>QUIZ</b> YOURSELF <br>
+               <small>Take the challenge and see what you have learned.</small>
+            </h3>
+        </div>
+        <ul>
+             <li><a href="#account" data-toggle="tab"></a></li>
+        </ul>
+
+        <div class="tab-pane" id="account">
+            <h4 class="info-text"> What would you like to do? </h4>
+            <div class="row">
+                <div class="col-sm-10 col-sm-offset-1">
+                    <div class="col-sm-4">
+                        <div class="choice" data-toggle="wizard-radio">
+{#                            <input type="radio" name="quiz" value="Take">#}
+                            <a href="/quiz"><div class="icon">
+                                <i class="fa fa-pencil"></i>
+                            </div></a>
+                            <h6>Take a Quiz</h6>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="choice" data-toggle="wizard-radio">
+{#                            <input type="radio" name="quiz" value="quiz_score">#}
+                            <a href="/quiz_scores"><div class="icon">
+                                <i class="fa fa-trophy"></i>
+                            </div></a>
+                            <h6>Quiz Scores</h6>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="choice"  data-toggle="wizard-radio">
+{#                            <input type="radio" name="quiz" value="card_score">#}
+                            <a href="/card-scores"><div class="icon">
+                                <i class="fa fa-graduation-cap"></i>
+                            </div></a>
+                            <h6>Card Scores</h6>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

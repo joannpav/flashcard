@@ -73,12 +73,22 @@ def viewCardList(request):
 
 
 def takeQuiz(request):
-	print "in takeQuiz"
+
 	questions = Question.objects.all().order_by('?')[:100]
-	return render_to_response('cardBox.html', locals(), RequestContext(request))
+	return render_to_response('quiz.html', locals(), RequestContext(request))
 
 def make_card(request):
 	return render_to_response('make_card.html', locals())
 
 def quiz(request):
+
 	return render_to_response('quiz.html', locals())
+
+def quiz_menu(request):
+	return render_to_response('quiz_menu.html', locals())
+
+def quiz_score(request):
+	return render_to_response('quiz_score.html', locals())
+
+def card_score(request):
+	return render_to_response('card_score.html', locals())

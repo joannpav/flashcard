@@ -9,5 +9,9 @@ urlpatterns = patterns('',
 	url(r'^ocr/', 'flash_card.views.ocr', name='ocr'),
 	url(r'^cardBox/', 'flash_card.views.viewCardList', name='cardBox'),
     url(r'^quiz/', 'flash_card.views.quiz', name='quiz'),
+    url(r'^quiz_menu/', 'flash_card.views.quiz_menu', name='quiz-menu'),
+    url(r'^quiz_score/', 'flash_card.views.quiz_score', name='quiz_score'),
+    url(r'^card_score/', 'flash_card.views.card_score', name='card_score'),
+
     #url(r'^admin/', include(admin.site.urls)),
 )

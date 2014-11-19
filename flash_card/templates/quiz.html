@@ -1,59 +1,87 @@
 {% extends "base_template.html" %}
 {% load staticfiles %}
 {% block content %}
+    <style type="text/css">
+#bootstrapSelectForm .selectContainer .form-control-feedback {
+    /* Adjust feedback icon position */
+    right: -15px;
+}
+</style>
 
-    <!--      Wizard container        -->
-<div class="wizard-container">
-    <form action="" method="">
-    <div class=" wizard-card ct-wizard-blue" id="wizard">
-      	<div class="wizard-header">
-            <h3>
-               <b>QUIZ</b> YOURSELF <br>
-               <small>Take the challenge and see what you have learned.</small>
-            </h3>
-        </div>
-        <ul>
-             <li><a href="#account" data-toggle="tab"></a></li>
-        </ul>
+<form id="bootstrapSelectForm" method="post" class="form-horizontal">
 
-        <div class="tab-pane" id="account">
-            <h4 class="info-text"> What would you like to do? </h4>
-            <div class="row">
-                <div class="col-sm-10 col-sm-offset-1">
-                    <div class="col-sm-4">
-                        <div class="choice" data-toggle="wizard-radio">
-                            <input type="radio" name="quiz" value="Take">
-                            <div class="icon">
-                                <i class="fa fa-pencil"></i>
-                            </div>
-                            <h6>Take a Quiz</h6>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="choice" data-toggle="wizard-radio">
-                            <input type="radio" name="quiz" value="quiz_score">
-                            <div class="icon">
-                                <i class="fa fa-trophy"></i>
-                            </div>
-                            <h6>Quiz Scores</h6>
-                        </div>
 
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="choice"  data-toggle="wizard-radio">
-                            <input type="radio" name="quiz" value="card_score">
-                            <div class="icon">
-                                <i class="fa fa-graduation-cap"></i>
-                            </div>
-                            <h6>Card Scores</h6>
-                        </div>
+    <div class="form-group">
 
-                    </div>
-                </div>
+        <div class="col-sm-5 selectContainer">
+            <h3>Randomly Selected Cards From Your Deck</h3>
+            <select name="language" class="form-control" id="list">
+                <option value="">Select Number of Cards</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+                <option value="25">25</option>
+            </select>
             </div>
-        </div>
-    </div>
+
+
+</div>
+</form>
+<div><button rel="tooltip" title="Click to start Quiz" class="btn btn-default btn-lg btn-fill">
+    <i class="fa fa-bolt" onclick="takeQuiz"></i> QUIZ</button>
 </div>
 
+<div class="col-sm-12 ">
 
+{% for question in questions %}
+
+{#    <p>Question: {{ question.question }}</p>#}
+{#    <p>Answer: {{ question.answer }}</p>#}
+
+        <div class="col-sm-4">
+                <!--    Here comes your card          -->
+                <div class="card-container">
+                <div class="card">
+                    <div class="front">
+                        <div class="cover">
+                            <img src="{% static 'images/dandy.jpg' %}"/>
+                        </div>
+                        <div class="user">
+                            <img class="img-circle" src="{% static 'images/flash_cards_Fotor_Fotor.jpg' %}"/>
+                        </div>
+                        <div class="content">
+                            <div class="main">
+                                <h3 class="name"><i class="fa fa-bolt"></i> Question</h3>
+
+                                <h5>{{ question.question }}?</h5>
+
+                            </div>
+
+                        </div>
+                    </div> <!-- end front panel -->
+                    <div class="back">
+                        <div class="header">
+                            <h5 class="motto">Flash Grabber<br>Flashcards From Your Screenshots<br>Study what you want,
+                                when you want</h5>
+                        </div>
+                        <div class="content">
+                            <div class="main">
+                                <h4 class="text-center"><i class="fa fa-bolt"></i> Answer</h4>
+                                <p>{{ question.answer }}.</p>
+                                </div>
+                        </div>
+                        <div class="footer">
+                            <div class="social-links text-center">
+                                <a href="" class="pass"><i class="fa fa-graduation-cap"></i> Pass</a>
+                                <a href="" class="fail"><i class="fa fa-thumbs-o-down"></i> Fail</a>
+                                <a href="" class="del"><i class="fa fa-times"></i> Del</a>
+                            </div>
+                        </div>
+                    </div> <!-- end back panel -->
+                </div> <!-- end card -->
+            </div> <!-- end card-container -->
+
+</div>
+    {% endfor %}
+</div>
 {% endblock content %}
