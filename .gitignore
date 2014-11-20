@@ -59,3 +59,4 @@ target/
 staticfiles
 local_settings.pylocal_settings.py
 local_settings.py
+.DS_Store
