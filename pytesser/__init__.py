@@ -18,7 +18,8 @@ def call_tesseract(input_filename, output_filename):
 	"""Calls external tesseract.exe on input file (restrictions on types),
 	outputting output_filename+'txt'"""
 	args = [tesseract_exe_name, input_filename, output_filename]
-	#print args
+	print "************"
+	print args
 	proc = subprocess.Popen(args)
 	retcode = proc.wait()
 	if retcode!=0:
