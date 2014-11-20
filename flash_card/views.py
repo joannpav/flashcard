@@ -16,32 +16,28 @@ from models import UploadFile
 # to amazon's kindle page where you have to go find them then copy them again
 
 def home(request):
-	#if request.method == 'POST':
 	form = UploadFileForm(request.POST, request.FILES)
 	if form.is_valid():
-		#UploadFile(file = request.FILES['file'])
-		textFile = save_file(request.FILES['file'])
+		filename = request.FILES['file']._get_name()
+		path = ''
+		textFile = image_file_to_string('%s/%s' % (settings.MEDIA_ROOT, str(path) + str(filename)))
 		request.session['textFile']=textFile
 
 		return HttpResponseRedirect(reverse('home'), locals())
-	#else:
-	#	form = UploadFileForm()
-
-	#data = {'form': form}
 	data = ""
 	return render_to_response('index.html', data, context_instance=RequestContext(request))
 
 
-def save_file(file, path=''):
-	''' Little helper to save a file
-	'''
-	filename = file._get_name()
-	fd = open('%s/%s' % (settings.MEDIA_ROOT, str(path) + str(filename)), 'wb')
-	for chunk in file.chunks():
-		fd.write(chunk)
-	fd.close()
-	result = ocrTest(fd)
-	return result
+# def save_file(file, path=''):
+# 	''' Little helper to save a file
+# 	'''
+# 	filename = file._get_name()
+# 	fd = open('%s/%s' % (settings.MEDIA_ROOT, str(path) + str(filename)), 'wb')
+# 	for chunk in file.chunks():
+# 		fd.write(chunk)
+# 	fd.close()
+# 	result = ocrTest(fd)
+# 	return result
 
 
 def ocr(request):
@@ -49,11 +45,11 @@ def ocr(request):
 	return render_to_response('ocr.html', locals())
 
 
-def ocrTest(fd):
-	fp = open(fd.name)
-	ms = Image.open(fp)
-	textFile = image_to_string(ms)
-	return textFile
+# def ocrTest(fd):
+# 	fp = open(fd.name)
+# 	ms = Image.open(fp)
+# 	textFile = image_to_string(ms)
+# 	return textFile
 
 @csrf_exempt
 def createCard(request):
