@@ -19,7 +19,7 @@
         </div>
         <div class="row">
                 <div class="col-sm-10 col-sm-offset-1">
-                    <div class="col-sm-3">
+                    <div class="col-sm-2">
                         <div class="choice" data-toggle="wizard-radio">
                             <div class="icon" rel="tooltip" title="Choose how you want the question formatted">
                                 <i class="fa fa-pencil"></i>
@@ -27,7 +27,7 @@
                             <h6>Choose 5W's</h6>
                         </div>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-2">
                         <div class="choice">
                         <form id="bootstrapSelectForm" method="post" class="form-horizontal">
 
@@ -61,7 +61,7 @@
 
         <div class="row">
                 <div class="col-sm-10 col-sm-offset-1">
-                    <div class="col-sm-3">
+                    <div class="col-sm-2">
                         <div class="choice" data-toggle="wizard-radio">
                             <div class="icon" rel="tooltip" title="As you select text, the Question form below will auto-populate.">
                                 <i class="fa fa-pencil"></i>
@@ -69,33 +69,51 @@
                             <h6>Select Text</h6>
                         </div>
                     </div>
-                    <div class="col-sm-9">
+                    <div class="col-sm-10">
                         <h3>Text From Your Image</h3>
                         <div id="ocr">{{ textFile }}</div>
                     </div>
                 </div>
         </div>
-
-
+        <div class="row">
+                <div class="col-sm-10 col-sm-offset-1">
+<div class="col-sm-2">
+                        <div class="choice" data-toggle="wizard-radio">
+                            <div class="icon" rel="tooltip" title="As you select text, the Question form below will auto-populate.">
+                                <i class="fa fa-pencil"></i>
+                            </div>
+                            <h6>Select Text</h6>
+                        </div>
+                    </div>
 
 <form id="CreateCardForm" name="CreateCardForm"  action="/createCard/" method="POST">{% csrf_token %}
 
-<p>
+<div class="col-sm-5">
     <label class="qaLabel">Question</label><br>
   <textarea class="qa" id="q" name="questionText"></textarea>
    </p>
-<p>
+</div>
+    <div class="col-sm-5">
     <label class="qaLabel">Answer</label><br>
     <textarea class="qa" id="a" name="answerText"></textarea>
-</p>
-{#<h3 class="step4" >Step 4: Click to create your card Or click to start over</h3>#}
+</div>
+<div class="row">
+                <div class="col-sm-10 col-sm-offset-1">
+
     <button rel="tooltip" title="Click to create your card" class="btn btn-default btn-lg btn-fill"  onclick="createCard"><i class="fa fa-bolt"></i> Create Card</button>
 
 </form>
+
     <button rel="tooltip" title="Click to erase your card" class="btn btn-default btn-lg btn-fill" id="clearCard" name="clearCard" onclick="ClearCard()"><i class="fa fa-bolt"></i> Erase Card</button>
-{#    <a href="/">Go back and select another file</a>#}
+
 
 </div>
+</div>
+
+</div>
+</div>
+</div>
+
 
 
 
