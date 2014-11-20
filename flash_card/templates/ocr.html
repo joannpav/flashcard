@@ -17,17 +17,17 @@
                <small>Easily add text to a flash card.</small>
             </h3>
         </div>
-        <div class="row">
+        <div class="row froggy">
                 <div class="col-sm-10 col-sm-offset-1">
                     <div class="col-sm-2">
                         <div class="choice" data-toggle="wizard-radio">
                             <div class="icon" rel="tooltip" title="Choose how you want the question formatted">
-                                <i class="fa fa-pencil"></i>
+                                <i class="fa fa-sort"></i>
                             </div>
                             <h6>Choose 5W's</h6>
                         </div>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-4">
                         <div class="choice">
                         <form id="bootstrapSelectForm" method="post" class="form-horizontal">
 
@@ -39,6 +39,7 @@
                                         right: -15px;
                                     }
                                     </style>
+                                <div class="col-sm-6">
                                     <select name="language" class="form-control" id="list">
                                         <option value="what">What</option>
                                         <option value="how">How</option>
@@ -46,11 +47,13 @@
                                         <option value="when">When</option>
                                         <option value="where">Where</option>
                                     </select>
+                                </div>
+                                <div class="col-sm-6">
                                     <select name="language" class="form-control" id="list2">
                                         <option value="are">are</option>
                                         <option value="is">is</option>
                                     </select>
-
+                                </div>
                             </div>
                         </form>
                         </div>
@@ -59,7 +62,7 @@
         </div>
 
 
-        <div class="row">
+        <div class="row froggy">
                 <div class="col-sm-10 col-sm-offset-1">
                     <div class="col-sm-2">
                         <div class="choice" data-toggle="wizard-radio">
@@ -70,47 +73,49 @@
                         </div>
                     </div>
                     <div class="col-sm-10">
-                        <h3>Text From Your Image</h3>
-                        <div id="ocr">{{ textFile }}</div>
+                        <h3 id="text_from">Text From Your Image<br><small>
+                            Highlight text with your mouse to add it to the flash card.</small></h3>
+                        <div rel="tooltip" title="On your first click, select text for the question.
+                         On your second click, select text for the answer." id="ocr">{{ textFile }}</div>
                     </div>
                 </div>
         </div>
-        <div class="row">
+        <div class="row froggy">
                 <div class="col-sm-10 col-sm-offset-1">
-<div class="col-sm-2">
+                    <div class="col-sm-2">
                         <div class="choice" data-toggle="wizard-radio">
                             <div class="icon" rel="tooltip" title="Pretty sweet, eh!.">
-                                <i class="fa fa-pencil"></i>
+                                <i class="fa fa-thumbs-o-up"></i>
                             </div>
-                            <h6>Select Text</h6>
+                            <h6>Your Selection</h6>
                         </div>
                     </div>
 
 <form id="CreateCardForm" name="CreateCardForm"  action="/createCard/" method="POST">{% csrf_token %}
 
-<div class="col-sm-5">
-    <label class="qaLabel">Question</label><br>
-  <textarea class="qa" id="q" name="questionText"></textarea>
-   </p>
-</div>
-    <div class="col-sm-5">
-    <label class="qaLabel">Answer</label><br>
-    <textarea class="qa" id="a" name="answerText"></textarea>
-</div>
-<div class="row">
+                    <div class="col-sm-5 ">
+                        <label class="qaLabel">Question</label><br>
+                      <textarea class="qa" id="q" name="questionText"></textarea>
+
+                    </div>
+                    <div class="col-sm-5">
+                    <label class="qaLabel">Answer</label><br>
+                    <textarea class="qa" id="a" name="answerText"></textarea>
+                    </div>
+                </div>
+        <div class="row froggy">
                 <div class="col-sm-10 col-sm-offset-1">
-                    <div class="col-sm-5 col-sm-offset-1">
-    <button rel="tooltip" title="Click to create your card" class="btn btn-default btn-lg btn-fill"  onclick="createCard"><i class="fa fa-bolt"></i> Create Card</button>
-    </div>
+                    <div class="col-sm-3 col-sm-offset-2">
+                    <button rel="tooltip" title="Click to create your card" class="btn btn-default btn-lg btn-fill"  onclick="createCard"><i class="fa fa-bolt"></i> Create Card</button>
+                    </div>
 </form>
-<div class="col-sm-5 col-sm-offset-1">
-    <button rel="tooltip" title="Click to erase your card" class="btn btn-default btn-lg btn-fill" id="clearCard" name="clearCard" onclick="ClearCard()"><i class="fa fa-bolt"></i> Erase Card</button>
-</div>
+                <div class="col-sm-3 col-sm-offset-2">
+                     <button rel="tooltip" title="Click to erase your card" class="btn btn-default btn-lg btn-fill" id="clearCard" name="clearCard" onclick="ClearCard()"><i class="fa fa-bolt"></i> Erase Card</button>
+                </div>
 
 </div>
 </div>
 
-</div>
 </div>
 </div>
 
