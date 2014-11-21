@@ -9,12 +9,6 @@ from pytesser import *
 from forms import UploadFileForm
 from models import UploadFile
 
-# here's a good example of a usecase: http://www.slideshare.net/albertspijkers/lean-analytics-and-practical-facts
-# slide preso download disabled, but you want to take notes
-# Other usecase is https://read.amazon.com/
-# Can't copy snippets from amazon reader to take notes. Yes, you can highlight them but then they go
-# to amazon's kindle page where you have to go find them then copy them again
-
 def home(request):
 	form = UploadFileForm(request.POST, request.FILES)
 	if form.is_valid():

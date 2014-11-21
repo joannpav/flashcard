@@ -26,7 +26,12 @@
                 {
 
                      $("#a").append(" " + st);
+                } else
+                {
+                   $("#a").empty().append(" ");
+                   $("#a").append(" " + st);
                 }
+
 			}
 
             /*$("#clearCard").click(function() {
