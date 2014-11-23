@@ -33,8 +33,8 @@ def home(request):
 # 	result = ocrTest(fd)
 # 	return result
 
-# instead of passing the file as a string through the session,
-# it may be better to just save the file then pass a string, which is the path to the file
+# instead of passing the text string through the session, you could just POST it or save it in the DB
+# and pass a reference to the ID
 def ocr(request):
 	textFile = request.session['textFile']
 	return render_to_response('ocr.html', locals())
