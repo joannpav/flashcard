@@ -33,7 +33,8 @@ def home(request):
 # 	result = ocrTest(fd)
 # 	return result
 
-
+# instead of passing the file as a string through the session,
+# it may be better to just save the file then pass a string, which is the path to the file
 def ocr(request):
 	textFile = request.session['textFile']
 	return render_to_response('ocr.html', locals())
@@ -45,6 +46,7 @@ def ocr(request):
 # 	textFile = image_to_string(ms)
 # 	return textFile
 
+# Should try to get this working without @csrf_exempt
 @csrf_exempt
 def createCard(request):
 	a = request.POST['answerText']
