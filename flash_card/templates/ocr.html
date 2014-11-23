@@ -91,6 +91,13 @@
                         </div>
                     </div>
 
+<!-- 
+This is pretty cool, how you've strung grabbing the text with tesseract, passing it back to the template
+then using selecttext to grab the parts you want.
+
+It'd been even more slick if parts of this process was done with AJAX so it was all happening
+on a single page instead of needing to submit forms.
+-->
 <form id="CreateCardForm" name="CreateCardForm"  action="/createCard/" method="POST">{% csrf_token %}
 
                     <div class="col-sm-5 ">
