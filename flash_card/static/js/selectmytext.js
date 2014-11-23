@@ -1,3 +1,4 @@
+            // Your tabs seem to be off in most files, as if they're twice as many spaces as usual.
             if(!window.Kolich){
 				Kolich = {};
 			}
